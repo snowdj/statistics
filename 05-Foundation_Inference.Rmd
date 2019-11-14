@@ -37,6 +37,7 @@ A uniform distribution is completely flat, it looks like this:
 
 ```{r 5unifagain, fig.cap="Uniform distribution showing that the numbers from 1 to 10 have an equal probability of being sampled",echo=F}
 library(ggplot2)
+library(dplyr)
 
 df<-data.frame(a=1:10,b=seq(.1,1,.1))
 df$a<-as.factor(df$a)
@@ -645,9 +646,14 @@ ggplot(all_df, aes(x=sample))+
 There you have it. The **sampling distribution of the mean differences** shrinks toward 0 as sample-size increases. This means if you run an experiment with a larger sample-size, you will be able to detect smaller mean differences, and be confident they aren't due to chance. Let's look at a table of the minimum and maximum values that chance produced across these four sample-sizes:
 
 ```{r}
-library(plyr)
-the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
-                                                  biggest=max(sample))
+#library(plyr)
+#the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
+#                                                  biggest=max(sample))
+the_range <- all_df %>%
+  group_by(sample_size) %>%
+  summarize(smallest=min(sample),
+            biggest=max(sample))
+
 knitr::kable(the_range)
 ```
 
@@ -680,8 +686,13 @@ for(sims in 1:1000){
   }
 }
 
-the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
-                                                  biggest=max(sample))
+#the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
+#                                                  biggest=max(sample))
+
+the_range <- all_df %>%
+  group_by(sample_size) %>%
+  summarize(smallest=min(sample),
+            biggest=max(sample))
 
 
 ggplot(the_range, aes(x=sample_size,y=smallest))+
@@ -737,7 +748,7 @@ Let's say you run an experiment to find out if chewing gum causes students to ge
 Let's say the data looked like this:
 
 ```{r}
-library(dplyr)
+
 gum<-round(runif(20,70,100))
 no_gum<-round(runif(20,40,90))
 
@@ -942,5 +953,15 @@ Have you noticed that we haven't used any formulas yet, but we have been able to
 Inferential statistics is an attempt to solve the problem: **where did my data from?**. In the randomization test example, our question was: **where did the differences between the means in my data come from?**. We know that the differences could be produced by chance alone. We simulated what chance can due using randomization. Then we plotted what chance can do using a histogram. Then, we used to picture to help us make an inference. Did our observed difference come from the distribution, or not? When the observed difference is clearly inside the chance distribution, then we can infer that our difference **could have been produced by chance**. When the observed difference is not clearly inside the chance distribution, then we can infer that our difference was **probably not produced by chance**.
 
 In my opinion, these pictures are very, very helpful. If one of our goals is to help ourselves summarize a bunch of complicated numbers to arrive at an inference, then the pictures do a great job. We don't even need a summary number, we just need to look at the picture and see if the observed difference is inside or outside of the window. This is what it is all about. Creating intuitive and meaningful ways to make inferences from our data. As we move forward, the main thing that we will do is formalize our process, and talk more about "standard" inferential statistics. For example, rather than looking at a picture (which is a good thing to do), we will create some helpful numbers. For example, what if you wanted to the probability that your difference could have been produced by chance? That could be a single number, like 95%. If there was a 95% probability that chance can produce the difference you observed, you might not be very confident that something like your experimental manipulation was causing the difference. If there was only 1% probability that chance could produce your difference, then you might be more confident that **chance did not** produce the difference; and, you might instead be comfortable with the possibility that your experimental manipulation actually caused the difference. So, how can we arrive at those numbers? In order to get there we will introduce you to some more foundational tools for statistical inference.
+
+## Videos
+
+### Null and Alternate Hypotheses
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gJ38qX0ihPc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Types of Errors
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zhhDCFPzlkw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Repeated Measures ANOVA | Answering questions with data</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:title" content="Chapter 8 Repeated Measures ANOVA | Answering questions with data" />
   <meta property="og:type" content="book" />
   
   
@@ -17,29 +16,34 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data" />
+  <meta name="twitter:title" content="Chapter 8 Repeated Measures ANOVA | Answering questions with data" />
   
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="anova.html">
-<link rel="next" href="factorial-anova.html">
+<link rel="prev" href="anova.html"/>
+<link rel="next" href="factorial-anova.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -65,41 +69,68 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -120,8 +151,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -178,6 +213,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.13.12" data-path="why-statistics.html"><a href="why-statistics.html#fraud-deception-and-self-deception"><i class="fa fa-check"></i><b>1.13.12</b> Fraud, deception and self-deception</a></li>
 </ul></li>
 <li class="chapter" data-level="1.14" data-path="why-statistics.html"><a href="why-statistics.html#summary"><i class="fa fa-check"></i><b>1.14</b> Summary</a></li>
+<li class="chapter" data-level="1.15" data-path="why-statistics.html"><a href="why-statistics.html#videos"><i class="fa fa-check"></i><b>1.15</b> Videos</a><ul>
+<li class="chapter" data-level="1.15.1" data-path="why-statistics.html"><a href="why-statistics.html#terms-of-statistics"><i class="fa fa-check"></i><b>1.15.1</b> Terms of Statistics</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
 <li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#this-is-what-too-many-numbers-looks-like"><i class="fa fa-check"></i><b>2.1</b> This is what too many numbers looks like</a></li>
@@ -208,6 +246,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.8" data-path="DescribingData.html"><a href="DescribingData.html#remember-to-look-at-your-data"><i class="fa fa-check"></i><b>2.8</b> Remember to look at your data</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="DescribingData.html"><a href="DescribingData.html#anscombes-quartet"><i class="fa fa-check"></i><b>2.8.1</b> Anscombe’s Quartet</a></li>
 <li class="chapter" data-level="2.8.2" data-path="DescribingData.html"><a href="DescribingData.html#datasaurus-dozen"><i class="fa fa-check"></i><b>2.8.2</b> Datasaurus Dozen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="DescribingData.html"><a href="DescribingData.html#videos-1"><i class="fa fa-check"></i><b>2.9</b> Videos</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-center-mode"><i class="fa fa-check"></i><b>2.9.1</b> Measures of center: Mode</a></li>
+<li class="chapter" data-level="2.9.2" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-center-median-and-mean"><i class="fa fa-check"></i><b>2.9.2</b> Measures of center: Median and Mean</a></li>
+<li class="chapter" data-level="2.9.3" data-path="DescribingData.html"><a href="DescribingData.html#standard-deviation-part-i"><i class="fa fa-check"></i><b>2.9.3</b> Standard deviation part I</a></li>
+<li class="chapter" data-level="2.9.4" data-path="DescribingData.html"><a href="DescribingData.html#standard-deviation-part-ii"><i class="fa fa-check"></i><b>2.9.4</b> Standard deviation part II</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Correlation.html"><a href="Correlation.html"><i class="fa fa-check"></i><b>3</b> Correlation</a><ul>
@@ -285,6 +329,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.14.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#a-slight-mistake-in-the-formula"><i class="fa fa-check"></i><b>4.14.1</b> A slight mistake in the formula</a></li>
 </ul></li>
 <li class="chapter" data-level="4.15" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#summary-2"><i class="fa fa-check"></i><b>4.15</b> Summary</a></li>
+<li class="chapter" data-level="4.16" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#videos-2"><i class="fa fa-check"></i><b>4.16</b> Videos</a><ul>
+<li class="chapter" data-level="4.16.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#introduction-to-probability"><i class="fa fa-check"></i><b>4.16.1</b> Introduction to Probability</a></li>
+<li class="chapter" data-level="4.16.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#chebychevs-theorem"><i class="fa fa-check"></i><b>4.16.2</b> Chebychev’s Theorem</a></li>
+<li class="chapter" data-level="4.16.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#z-scores-1"><i class="fa fa-check"></i><b>4.16.3</b> Z-scores</a></li>
+<li class="chapter" data-level="4.16.4" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#normal-distribution-i"><i class="fa fa-check"></i><b>4.16.4</b> Normal Distribution I</a></li>
+<li class="chapter" data-level="4.16.5" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#normal-distribution-ii"><i class="fa fa-check"></i><b>4.16.5</b> Normal Distribution II</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html"><i class="fa fa-check"></i><b>5</b> Foundations for inference</a><ul>
 <li class="chapter" data-level="5.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#brief-review-of-experiments"><i class="fa fa-check"></i><b>5.1</b> Brief review of Experiments</a></li>
@@ -310,6 +361,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.6" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-randomization-test-permutation-test"><i class="fa fa-check"></i><b>5.6</b> The randomization test (permutation test)</a><ul>
 <li class="chapter" data-level="5.6.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#pretend-example-does-chewing-gum-improve-your-grades"><i class="fa fa-check"></i><b>5.6.1</b> Pretend example does chewing gum improve your grades?</a></li>
 <li class="chapter" data-level="5.6.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#take-homes-so-far"><i class="fa fa-check"></i><b>5.6.2</b> Take homes so far</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#videos-3"><i class="fa fa-check"></i><b>5.7</b> Videos</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#null-and-alternate-hypotheses"><i class="fa fa-check"></i><b>5.7.1</b> Null and Alternate Hypotheses</a></li>
+<li class="chapter" data-level="5.7.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#types-of-errors"><i class="fa fa-check"></i><b>5.7.2</b> Types of Errors</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-Tests</a><ul>
@@ -340,6 +395,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.6.1" data-path="t-tests.html"><a href="t-tests.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.6.1</b> Simulating a one-sample t-test</a></li>
 <li class="chapter" data-level="6.6.2" data-path="t-tests.html"><a href="t-tests.html#simulating-a-paired-samples-t-test"><i class="fa fa-check"></i><b>6.6.2</b> Simulating a paired samples t-test</a></li>
 <li class="chapter" data-level="6.6.3" data-path="t-tests.html"><a href="t-tests.html#simulating-an-independent-samples-t.test"><i class="fa fa-check"></i><b>6.6.3</b> Simulating an independent samples t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="t-tests.html"><a href="t-tests.html#videos-4"><i class="fa fa-check"></i><b>6.7</b> Videos</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="t-tests.html"><a href="t-tests.html#one-or-two-tailed-tests"><i class="fa fa-check"></i><b>6.7.1</b> One or Two tailed tests</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
@@ -453,8 +511,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a><ul>
 <li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
-<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
+<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.-real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
+<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.-abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
 <li class="chapter" data-level="12.1.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#cohens-d"><i class="fa fa-check"></i><b>12.1.3</b> Cohen’s d</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a><ul>
@@ -532,87 +590,47 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Last time, we imagined we had some data in three groups, A, B, and C. The data looked like this:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-groups
-</th>
-<th style="text-align:right;">
-scores
-</th>
+<tr class="header">
+<th align="left">groups</th>
+<th align="right">scores</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-20
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">20</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-11
-</td>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">11</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-6
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-7
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">7</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-11
-</td>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">11</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">2</td>
 </tr>
 </tbody>
 </table>
@@ -620,117 +638,57 @@ C
 <p>Let’s change things up a tiny bit, and imagine we only had 3 subjects in total in the experiment. And, that each subject contributed data to the three levels of the independent variable, A, B, and C. Before we called the IV <code>groups</code>, because there were different groups of subjects. Let’s change that to <code>conditions</code>, because now the same group of subjects participates in all three conditions. Here’s the new table for a within-subjects (repeated measures) version of this experiment:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:right;">
-subjects
-</th>
-<th style="text-align:left;">
-conditions
-</th>
-<th style="text-align:right;">
-scores
-</th>
+<tr class="header">
+<th align="right">subjects</th>
+<th align="left">conditions</th>
+<th align="right">scores</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-20
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">20</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-11
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">11</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-6
-</td>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-7
-</td>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">7</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">C</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-11
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">C</td>
+<td align="right">11</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">C</td>
+<td align="right">2</td>
 </tr>
 </tbody>
 </table>
@@ -787,209 +745,91 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p>The total sums of squares, or <span class="math inline">\(SS\text{Total}\)</span> measures the total variation in a set of data. All we do is find the difference between each score and the grand mean, then we square the differences and add them all up.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subjects
-</th>
-<th style="text-align:left;">
-conditions
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">subjects</th>
+<th align="left">conditions</th>
+<th align="left">scores</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:left;">
-169
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">13</td>
+<td align="left">169</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-302
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left"></td>
+<td align="left">63</td>
+<td align="left">0</td>
+<td align="left">302</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-33.5555555555556
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left"></td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">33.5555555555556</td>
 </tr>
 </tbody>
 </table>
@@ -1009,245 +849,103 @@ Means
 <p>Consider this table, showing the calculations for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subjects
-</th>
-<th style="text-align:left;">
-conditions
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-means
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">subjects</th>
+<th align="left">conditions</th>
+<th align="left">scores</th>
+<th align="left">means</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-72
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left"></td>
+<td align="left">63</td>
+<td align="left">63</td>
+<td align="left">0</td>
+<td align="left">72</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-8
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left"></td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">8</td>
 </tr>
 </tbody>
 </table>
@@ -1265,245 +963,103 @@ Means
 <p>Or, we could compute <span class="math inline">\(SS_\text{Error (within conditions)}\)</span> directly from the data as we did last time:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subjects
-</th>
-<th style="text-align:left;">
-conditions
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-means
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">subjects</th>
+<th align="left">conditions</th>
+<th align="left">scores</th>
+<th align="left">means</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
--9
-</td>
-<td style="text-align:left;">
-81
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">11</td>
+<td align="left">-9</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">11</td>
+<td align="left">0</td>
+<td align="left">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-81
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">11</td>
+<td align="left">9</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-9
-</td>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-9
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--6
-</td>
-<td style="text-align:left;">
-36
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">5</td>
+<td align="left">-6</td>
+<td align="left">36</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-9
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-230
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left"></td>
+<td align="left">63</td>
+<td align="left">63</td>
+<td align="left">0</td>
+<td align="left">230</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-25.5555555555556
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left"></td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">25.5555555555556</td>
 </tr>
 </tbody>
 </table>
@@ -1515,245 +1071,103 @@ Means
 <p>The <code>means</code> column now shows all of the subject means. We then find the difference between each subject mean and the grand mean. These deviations are shown in the <code>diff</code> column. Then we square the deviations, and sum them up.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subjects
-</th>
-<th style="text-align:left;">
-conditions
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-means
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">subjects</th>
+<th align="left">conditions</th>
+<th align="left">scores</th>
+<th align="left">means</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-9.33
-</td>
-<td style="text-align:left;">
-2.33
-</td>
-<td style="text-align:left;">
-5.4289
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">9.33</td>
+<td align="left">2.33</td>
+<td align="left">5.4289</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">8</td>
+<td align="left">1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-3.66
-</td>
-<td style="text-align:left;">
--3.34
-</td>
-<td style="text-align:left;">
-11.1556
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">3.66</td>
+<td align="left">-3.34</td>
+<td align="left">11.1556</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-9.33
-</td>
-<td style="text-align:left;">
-2.33
-</td>
-<td style="text-align:left;">
-5.4289
-</td>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">9.33</td>
+<td align="left">2.33</td>
+<td align="left">5.4289</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">8</td>
+<td align="left">1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-3.66
-</td>
-<td style="text-align:left;">
--3.34
-</td>
-<td style="text-align:left;">
-11.1556
-</td>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">3.66</td>
+<td align="left">-3.34</td>
+<td align="left">11.1556</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-9.33
-</td>
-<td style="text-align:left;">
-2.33
-</td>
-<td style="text-align:left;">
-5.4289
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">9.33</td>
+<td align="left">2.33</td>
+<td align="left">5.4289</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">8</td>
+<td align="left">1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-3.66
-</td>
-<td style="text-align:left;">
--3.34
-</td>
-<td style="text-align:left;">
-11.1556
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">3.66</td>
+<td align="left">-3.34</td>
+<td align="left">11.1556</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-62.97
-</td>
-<td style="text-align:left;">
--0.0299999999999994
-</td>
-<td style="text-align:left;">
-52.7535
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left"></td>
+<td align="left">63</td>
+<td align="left">62.97</td>
+<td align="left">-0.0299999999999994</td>
+<td align="left">52.7535</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-6.99666666666667
-</td>
-<td style="text-align:left;">
--0.00333333333333326
-</td>
-<td style="text-align:left;">
-5.8615
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left"></td>
+<td align="left">7</td>
+<td align="left">6.99666666666667</td>
+<td align="left">-0.00333333333333326</td>
+<td align="left">5.8615</td>
 </tr>
 </tbody>
 </table>
@@ -1771,86 +1185,39 @@ Means
 <p>Before we continue to compute the MSEs and F-value for our data, let’s quickly check our work. For example, we could have R compute the repeated measures ANOVA for us, and then we could look at the ANOVA table and see if we are on the right track so far.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-Sum Sq
-</th>
-<th style="text-align:right;">
-Mean Sq
-</th>
-<th style="text-align:right;">
-F value
-</th>
-<th style="text-align:right;">
-Pr(&gt;F)
-</th>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-52.66667
-</td>
-<td style="text-align:right;">
-26.33333
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="odd">
+<td>Residuals</td>
+<td align="right">2</td>
+<td align="right">52.66667</td>
+<td align="right">26.33333</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-conditions
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-72.00000
-</td>
-<td style="text-align:right;">
-36.00000
-</td>
-<td style="text-align:right;">
-0.8120301
-</td>
-<td style="text-align:right;">
-0.505848
-</td>
+<tr class="even">
+<td>conditions</td>
+<td align="right">2</td>
+<td align="right">72.00000</td>
+<td align="right">36.00000</td>
+<td align="right">0.8120301</td>
+<td align="right">0.505848</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-177.33333
-</td>
-<td style="text-align:right;">
-44.33333
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="odd">
+<td>Residuals</td>
+<td align="right">4</td>
+<td align="right">177.33333</td>
+<td align="right">44.33333</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1877,86 +1244,39 @@ NA
 <p>We already conducted the repeated-measures ANOVA using R and reported the ANOVA. Here it is again. The table shows the <span class="math inline">\(p\)</span>-value associated with our <span class="math inline">\(F\)</span>-value.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-Sum Sq
-</th>
-<th style="text-align:right;">
-Mean Sq
-</th>
-<th style="text-align:right;">
-F value
-</th>
-<th style="text-align:right;">
-Pr(&gt;F)
-</th>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-52.66667
-</td>
-<td style="text-align:right;">
-26.33333
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="odd">
+<td>Residuals</td>
+<td align="right">2</td>
+<td align="right">52.66667</td>
+<td align="right">26.33333</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-conditions
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-72.00000
-</td>
-<td style="text-align:right;">
-36.00000
-</td>
-<td style="text-align:right;">
-0.8120301
-</td>
-<td style="text-align:right;">
-0.505848
-</td>
+<tr class="even">
+<td>conditions</td>
+<td align="right">2</td>
+<td align="right">72.00000</td>
+<td align="right">36.00000</td>
+<td align="right">0.8120301</td>
+<td align="right">0.505848</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-177.33333
-</td>
-<td style="text-align:right;">
-44.33333
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="odd">
+<td>Residuals</td>
+<td align="right">4</td>
+<td align="right">177.33333</td>
+<td align="right">44.33333</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
@@ -2005,8 +1325,8 @@ Figure 8.5: p-value distributions for a between and within-subjects ANOVA
 </p>
 </div>
 <p>Here we have two distributions of observed p-values for the simulations. The red line shows the location of 0.05. Overall, we can see that for both designs, we got a full range of <span class="math inline">\(p\)</span>-values from 0 to 1. This means that many times we would not have rejected the hypothesis of no differences (even though we know there is a small difference). We would have rejected the null every time the <span class="math inline">\(p\)</span>-value was less than 0.05.</p>
-<p>For the between subject design, there were 554 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.554 of experiments were “significant”, with alpha=.05.</p>
-<p>For the within subject design, there were 526 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.526 of experiments were “significant”, with alpha=.05.</p>
+<p>For the between subject design, there were 599 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.599 of experiments were “significant”, with alpha=.05.</p>
+<p>For the within subject design, there were 570 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.57 of experiments were “significant”, with alpha=.05.</p>
 <p>OK, well, you still might not be impressed. In this case, the between-subjects design detected the true effect slightly more often than the repeated measures design. Both them were right around 55% of the time. Based on this, we could say the two designs are pretty comparable in their sensitivity, or ability to detect a true difference when there is one.</p>
 <p>However, remember that the between-subjects design uses 30 subjects, and the repeated measures design only uses 10. We had to make a big investment to get our 30 subjects. And, we’re kind of unfairly comparing the between design (which is more sensitive because it has more subjects) with the repeated measures design that has fewer subjects.</p>
 <p>What do you think would happen if we ran 30 subjects in the repeated measures design? Let’s find out. Here we redo the above, but this time only for the repeated measures design. We increase <span class="math inline">\(N\)</span> from 10 to 30.</p>
@@ -2016,12 +1336,12 @@ Figure 8.5: p-value distributions for a between and within-subjects ANOVA
 Figure 8.6: p-value distribution for within-subjects design with n= 30
 </p>
 </div>
-<p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the <span class="math inline">\(p\)</span>-values were less than .05. There were 984 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.984 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design.</p>
+<p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the <span class="math inline">\(p\)</span>-values were less than .05. There were 982 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.982 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design.</p>
 </div>
 </div>
 <div id="real-data" class="section level2">
 <h2><span class="header-section-number">8.5</span> Real Data</h2>
-<p>Let’s look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College <span class="citation">(Behmer and Crump <a href="#ref-behmer2017spatial">2017</a>)</span>.</p>
+<p>Let’s look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College <span class="citation">(Behmer and Crump <a href="#ref-behmer2017spatial" role="doc-biblioref">2017</a>)</span>.</p>
 <p>We were interested in how people perform sequences of actions. One question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters.</p>
 <p>From prior work we knew that people type words way faster than than random letters, but if you made the random letters a little bit more English-like, then people type those letter strings a little bit faster, but not as slow as random string.</p>
 <p>In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in English (Bigram Condition, QUEND), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let’s take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.</p>
@@ -2039,86 +1359,39 @@ Figure 8.7: Results from Behmer &amp; Crump (2017)
 <p>Let’s focus only on the block of trials where participants were allowed to look at the keyboard while they typed, that’s the red line, for the “visible keyboard” block. We can see the means look different. Let’s next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-Sum Sq
-</th>
-<th style="text-align:right;">
-Mean Sq
-</th>
-<th style="text-align:right;">
-F value
-</th>
-<th style="text-align:right;">
-Pr(&gt;F)
-</th>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-37
-</td>
-<td style="text-align:right;">
-2452611.9
-</td>
-<td style="text-align:right;">
-66286.808
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="odd">
+<td>Residuals</td>
+<td align="right">37</td>
+<td align="right">2452611.9</td>
+<td align="right">66286.808</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Stimulus
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1424914.0
-</td>
-<td style="text-align:right;">
-712457.010
-</td>
-<td style="text-align:right;">
-235.7342
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td>Stimulus</td>
+<td align="right">2</td>
+<td align="right">1424914.0</td>
+<td align="right">712457.010</td>
+<td align="right">235.7342</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Residuals1
-</td>
-<td style="text-align:right;">
-74
-</td>
-<td style="text-align:right;">
-223649.4
-</td>
-<td style="text-align:right;">
-3022.289
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="odd">
+<td>Residuals1</td>
+<td align="right">74</td>
+<td align="right">223649.4</td>
+<td align="right">3022.289</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
@@ -2134,7 +1407,7 @@ NA
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-behmer2017spatial">
-<p>Behmer, Lawrence P, and Matthew JC Crump. 2017. “Spatial Knowledge During Skilled Action Sequencing: Hierarchical Versus Nonhierarchical Representations.” <em>Attention, Perception, &amp; Psychophysics</em> 79 (8). Springer: 2435–48.</p>
+<p>Behmer, Lawrence P, and Matthew JC Crump. 2017. “Spatial Knowledge During Skilled Action Sequencing: Hierarchical Versus Nonhierarchical Representations.” <em>Attention, Perception, &amp; Psychophysics</em> 79 (8): 2435–48.</p>
 </div>
 </div>
             </section>
@@ -2148,11 +1421,13 @@ NA
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -2163,7 +1438,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2175,6 +1450,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statistics/blob/master/08-RMANOVA.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["statistics.pdf"],
 "toc": {
@@ -2189,10 +1468,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
